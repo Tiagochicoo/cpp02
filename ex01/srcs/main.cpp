@@ -6,7 +6,7 @@
 /*   By: tpereira <tpereira@42Lisboa.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 09:45:16 by tpereira          #+#    #+#             */
-/*   Updated: 2023/04/11 14:54:04 by tpereira         ###   ########.fr       */
+/*   Updated: 2023/04/11 14:55:45 by tpereira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,3 +27,5 @@ int	main(void)
 
 	return 0;
 }
+
+//https://embeddedartistry.com/blog/2018/07/12/simple-fixed-point-conversion-in-c/
