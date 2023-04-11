@@ -6,7 +6,7 @@
 /*   By: tpereira <tpereira@42Lisboa.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 19:30:52 by tpereira          #+#    #+#             */
-/*   Updated: 2023/04/10 09:44:35 by tpereira         ###   ########.fr       */
+/*   Updated: 2023/04/11 12:47:15 by tpereira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ class Fixed
 {
 	private:
 		int 				_fixed;
-		static const int	_fractional = 8;
+		static const int	_fractional = 0;
 
 	public:
 

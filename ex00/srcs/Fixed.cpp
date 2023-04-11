@@ -6,7 +6,7 @@
 /*   By: tpereira <tpereira@42Lisboa.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 19:30:47 by tpereira          #+#    #+#             */
-/*   Updated: 2023/04/10 09:53:43 by tpereira         ###   ########.fr       */
+/*   Updated: 2023/04/11 13:04:21 by tpereira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,9 @@ Fixed::Fixed()
 
 Fixed::Fixed( const Fixed & src )
 {
+	(void)src;
 	std::cout << "Copy constructor called\n";
-	std::cout << src << "\n";
+	// std::cout << src << "\n";
 }
 
 
@@ -46,15 +47,14 @@ Fixed::~Fixed()
 Fixed &				Fixed::operator=( Fixed const & rhs )
 {
 	if ( this != &rhs )
-	{
 		this->_fixed = rhs.getRawBits();
-	}
 	return *this;
 }
 
 std::ostream &			operator<<( std::ostream & o, Fixed const & i )
 {
-	o << "Value = " << i.getRawBits();
+	std::cout << "Copy assignment operator called\n";
+	o << i.getRawBits();
 	return o;
 }
 
@@ -66,7 +66,7 @@ std::ostream &			operator<<( std::ostream & o, Fixed const & i )
 int Fixed::getRawBits(void) const
 {
 	std::cout << "getRawBits member function called\n";
-	return this->_fixed;
+	return this->_fractional;
 }
 
 void Fixed::setRawBits(int const raw)
