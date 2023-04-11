@@ -6,7 +6,7 @@
 /*   By: tpereira <tpereira@42Lisboa.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 19:30:52 by tpereira          #+#    #+#             */
-/*   Updated: 2023/04/11 13:46:25 by tpereira         ###   ########.fr       */
+/*   Updated: 2023/04/11 14:50:33 by tpereira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <iostream>
 # include <string>
+# include <cmath>
 
 class Fixed
 {
@@ -26,6 +27,7 @@ class Fixed
 
 		Fixed();
 		Fixed( Fixed const & src );
+		Fixed( const int & value );
 		~Fixed();
 
 		Fixed &		operator=( Fixed const & rhs );
@@ -33,5 +35,7 @@ class Fixed
 		int 	getRawBits(void) const;
 		void	setRawBits(int const raw);
 };
+
+std::ostream &			operator<<( std::ostream & o, Fixed const & i );
 
 #endif /* *********************************************************** FIXED_H */

@@ -6,7 +6,7 @@
 /*   By: tpereira <tpereira@42Lisboa.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 19:30:47 by tpereira          #+#    #+#             */
-/*   Updated: 2023/04/11 13:48:36 by tpereira         ###   ########.fr       */
+/*   Updated: 2023/04/11 14:53:43 by tpereira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,11 @@ Fixed::Fixed( const Fixed & src )
 	std::cout << "Copy constructor called\n";
 }
 
+Fixed::Fixed( const int & value )
+{
+	this->_fixed = value * (1 << Fixed::_fractional);
+	std::cout << "Integer constructor called\n";
+}
 
 /*
 ** -------------------------------- DESTRUCTOR --------------------------------
@@ -50,13 +55,19 @@ Fixed &				Fixed::operator=( Fixed const & rhs )
 	return *this;
 }
 
+std::ostream &			operator<<( std::ostream & o, Fixed const & i )
+{
+	o << i.getRawBits();
+	return o;
+}
+
 /*
 ** --------------------------------- METHODS ----------------------------------
 */
 
 int Fixed::getRawBits(void) const
 {
-	std::cout << "getRawBits member function called\n";
+	// std::cout << "getRawBits member function called\n";
 	return this->_fixed;
 }
 
