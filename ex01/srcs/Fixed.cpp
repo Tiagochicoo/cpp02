@@ -6,7 +6,7 @@
 /*   By: tpereira <tpereira@42Lisboa.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 19:30:47 by tpereira          #+#    #+#             */
-/*   Updated: 2023/04/11 14:53:43 by tpereira         ###   ########.fr       */
+/*   Updated: 2023/04/12 09:05:22 by tpereira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,16 @@ Fixed::Fixed( const Fixed & src )
 	std::cout << "Copy constructor called\n";
 }
 
-Fixed::Fixed( const int & value )
+Fixed::Fixed( const int value )
 {
 	this->_fixed = value * (1 << Fixed::_fractional);
 	std::cout << "Integer constructor called\n";
+}
+
+Fixed::Fixed( const float value )
+{
+	this->_fixed = roundf(value * (1 << Fixed::_fractional));
+	std::cout << "Float constructor called\n";
 }
 
 /*
@@ -43,7 +49,6 @@ Fixed::~Fixed()
 	std::cout << "Destructor called\n";
 }
 
-
 /*
 ** --------------------------------- OVERLOAD ---------------------------------
 */
@@ -51,13 +56,13 @@ Fixed::~Fixed()
 Fixed &				Fixed::operator=( Fixed const & rhs )
 {
 	std::cout << "Copy assignment operator called\n";
-	this->_fixed = rhs.getRawBits();
+	this->_fixed = rhs._fixed;
 	return *this;
 }
 
 std::ostream &			operator<<( std::ostream & o, Fixed const & i )
 {
-	o << i.getRawBits();
+	o << i.toFloat();
 	return o;
 }
 
@@ -73,8 +78,18 @@ int Fixed::getRawBits(void) const
 
 void Fixed::setRawBits(int const raw)
 {
+	// std::cout << "setRawBits member function called\n";
 	this->_fixed = raw;
-	std::cout << "setRawBits member function called\n";
+}
+
+float Fixed::toFloat(void) const
+{
+	return ((float)this->_fixed / (1 << Fixed::_fractional));
+}
+
+int Fixed::toInt(void) const
+{
+	return (this->_fixed >> Fixed::_fractional);
 }
 
 /*
